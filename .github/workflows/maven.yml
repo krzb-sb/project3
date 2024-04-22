@@ -27,8 +27,15 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+    - name: Clean workspace
+      run: mvn clean
+    - name: Run tests
+      run: mvn test
+    - name: Build jar file
+      run: mvn install
+    - name: Final step
+      run: echo "Koniec"
+
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
